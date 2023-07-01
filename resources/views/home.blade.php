@@ -8,12 +8,12 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Elections</p>
                                 <h5 class="font-weight-bolder">
-                                    $53,000
+                                    En developpement
                                 </h5>
                                 <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
+                                    <span class="text-success text-sm font-weight-bolder">+1%</span>
                                     since yesterday
                                 </p>
                             </div>
@@ -33,12 +33,12 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Voters</p>
                                 <h5 class="font-weight-bolder">
-                                    2,300
+                                    0
                                 </h5>
                                 <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
+                                    <span class="text-success text-sm font-weight-bolder">+0%</span>
                                     since last week
                                 </p>
                             </div>
@@ -58,9 +58,9 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Visitors</p>
                                 <h5 class="font-weight-bolder">
-                                    +3,462
+                                    +0
                                 </h5>
                                 <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -83,13 +83,12 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Voting time</p>
                                 <h5 class="font-weight-bolder">
-                                    $103,430
+                                    12h
                                 </h5>
                                 <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+5%</span> than last
-                                    month
+                                    <span class="text-success text-sm font-weight-bolder">+5%</span> soon...
                                 </p>
                             </div>
                         </div>
@@ -107,10 +106,10 @@
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
                 <div class="card-header pb-0 pt-3 bg-transparent">
-                    <h6 class="text-capitalize">Sales overview</h6>
+                    <h6 class="text-capitalize">Voting card</h6>
                     <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
-                        <span class="font-weight-bold">4% more</span> in 2021
+                        <span class="font-weight-bold">Soon.....</span> 
                     </p>
                 </div>
                 <div class="card-body p-3">
@@ -130,7 +129,7 @@
                                 <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                                     <i class="ni ni-camera-compact text-dark opacity-10"></i>
                                 </div>
-                                <h5 class="text-white mb-1">Get started with Argon</h5>
+                                <h5 class="text-white mb-1">Get started with kimbocare</h5>
                                 <p>There’s nothing I really wanted to do in life that I wasn’t able to get good
                                     at.</p>
                             </div>
@@ -177,7 +176,7 @@
             <div class="card ">
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Sales by Country</h6>
+                        <h6 class="mb-2">Votes by Faculty</h6>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -190,8 +189,8 @@
                                             <img src="{{ asset('assets/img/icons/flags/US.png') }}" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">United States</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Faculty:</p>
+                                            <h6 class="text-sm mb-0">Science</h6>
                                         </div>
                                     </div>
                                 </td>
@@ -221,8 +220,8 @@
                                             <img src="{{ asset('assets/img/icons/flags/DE.png') }}" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Germany</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Faculty:</p>
+                                            <h6 class="text-sm mb-0">Letter</h6>
                                         </div>
                                     </div>
                                 </td>
@@ -252,8 +251,8 @@
                                             <img src="{{ asset('assets/img/icons/flags/GB.png') }}" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Great Britain</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Faculty:</p>
+                                            <h6 class="text-sm mb-0">Legal science</h6>
                                         </div>
                                     </div>
                                 </td>
@@ -283,8 +282,8 @@
                                             <img src="{{ asset('assets/img/icons/flags/BR.png') }}" alt="Country flag">
                                         </div>
                                         <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Brasil</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Faculty:</p>
+                                            <h6 class="text-sm mb-0">Medecine</h6>
                                         </div>
                                     </div>
                                 </td>

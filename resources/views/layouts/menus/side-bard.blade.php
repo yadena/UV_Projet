@@ -6,7 +6,7 @@
         <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
             target="_blank">
             <img src="{{ asset('assets/img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">Argon Dashboard 2</span>
+            <span class="ms-1 font-weight-bold">Voting Dashboard </span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -16,9 +16,9 @@
                 <a class="nav-link active" href="./pages/dashboard.html">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i class="ni ni-box-2 text-primary text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Elections</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -27,36 +27,50 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">A venir</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="./pages/billing.html">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        <i class="ni ni-button-play text-warning text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Billing</span>
+                    <span class="nav-link-text ms-1">En cours</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="./pages/virtual-reality.html">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-app text-info text-sm opacity-10"></i>
+                        <i class="ni ni-check-bold text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Virtual Reality</span>
+                    <span class="nav-link-text ms-1">Terminé</span>
+                </a>
+            </li>
+            <li class="nav-item mt-3">
+                
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Admin </h6>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="./pages/virtual-reality.html">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Liste elections</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="./pages/rtl.html">
+                <a class="nav-link " href="./pages/virtual-reality.html">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+                        <i class="ni ni-collection text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">RTL</span>
+                    <span class="nav-link-text ms-1">Liste candidats</span>
                 </a>
             </li>
+           
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
