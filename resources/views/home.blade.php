@@ -38,9 +38,10 @@
                                     0
                                 </h5>
                                 <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+0%</span>
-                                    since last week
+                                   
                                 </p>
+                                <button class="btn btn-primary" type="submit" action="/vote">Voter</button>
+
                             </div>
                         </div>
                         <div class="col-4 text-end">

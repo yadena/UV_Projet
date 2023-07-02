@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +19,10 @@ Route::get('/', function () {
 
 Route::get('/table', function () {
     return view('pages.user.index');
+});
+
+Route::get('/add/candidat',[CandidatController::class,'index']);
+
+Route::get('/vote', function () {
+    return view('layouts.electeur.voter');
 });
