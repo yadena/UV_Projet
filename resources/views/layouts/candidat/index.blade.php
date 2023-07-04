@@ -1,0 +1,33 @@
+@extends('layouts.app')
+
+@section('body')
+    <div class="container mt-3">
+        <table class="table text-white">
+            <tr>
+                
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Voix</th>
+                <th>Matricule</th>
+                <th>Niveau</th>
+                <th>Action</th>
+            </tr>
+            @foreach($candidats as $candidat)
+                <tr>
+                    <td>{{$candidat->nom}}</td>
+                    <td>{{$candidat->prenom}}</td>
+                    <td>{{$candidat->voix}}</td>
+                    <td>{{$candidat->matricule}}</td>
+                    <td>{{$candidat->niveau}}</td>
+                    <td>
+                        <button class="btn btn-secondary " type="button"  aria-expanded="false" action="/vote">
+                            Voter
+                        </button>
+                    </td>
+                </tr>
+            @endforeach
+            
+        </table>
+    </div>
+
+@endsection
