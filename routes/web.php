@@ -21,8 +21,16 @@ Route::get('/table', function () {
     return view('pages.user.index');
 });
 
-Route::get('/add/candidat',[CandidatController::class,'index']);
 
-Route::get('/vote', function () {
-    return view('layouts.electeur.voter');
+Route::get('/add/candidat',function(){
+    return view('layouts.candidat.add');
 });
+
+Route::get('/liste/candidat',[CandidatController::class,'index'])->name('liste.candidat');
+
+Route::post('/Enregistrer/candidat',[CandidatController::class,'store'])->name('store.candidat');
+
+Route::get('/elections',[ElectionController::class,'index']);
+
+Route::get('/vote', [ElecteurController::class,'vote'])->name('candidat.vote');
+

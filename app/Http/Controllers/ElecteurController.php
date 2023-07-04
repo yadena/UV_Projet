@@ -119,7 +119,7 @@ class ElecteurController extends Controller
         if (Str::contains($electeur->matricule, $election->faculté) ){
             if ($electeur) {
                 
-                if ($electeur->niveau == $electeur->election->niveau){
+                if ($electeur->niveau == $election->niveau){
                     if(!$electeur->voted){
                         // Vérifier si le candidat existe
                         $candidat = Candidat::find($candidatId);
