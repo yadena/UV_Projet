@@ -12,12 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('candidats', function (Blueprint $table) {
-            
+            $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->integer('voix')->default(0);
+            $table->date('DateNaissance');
+            $table->integer('voie')->default(0);
             $table->string('matricule')->unique()->id();
+            $table->string('faculte');
+            $table->string('filiere');
             $table->integer('niveau');
+            $table->string('motivation');
             $table->timestamps();
         });
     }

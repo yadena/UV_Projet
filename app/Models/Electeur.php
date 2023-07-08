@@ -12,6 +12,7 @@ class Electeur extends Model
         'nom',
         'prenom',
         'candidat_id',
+        'filiere',
         'niveau'
     ];
 

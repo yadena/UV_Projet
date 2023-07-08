@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('elections', function (Blueprint $table) {
             $table->id();
+            $table->string('faculte');
+            $table->string('filiere');
             $table->integer('niveau');
+            $table->date('datedebut');
+            $table->date('datefin');
             $table->boolean('statuts');
-            $table->string('faculté');
             $table->timestamps();
         });
     }

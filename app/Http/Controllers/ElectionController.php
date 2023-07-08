@@ -13,17 +13,23 @@ class ElectionController extends Controller
      */
     public function index()
     {
-        $elections = Election::all();
-        
-        return view('layouts.election.index', compact('elections'));
+
+        return view('election.ajouter');
     }
+    public function liste()
+    {
+        $election = Election::all();
+
+        return view('election.liste', compact('election'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -31,7 +37,18 @@ class ElectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $election = new Election();
+        $election->faculte =$request->faculte;
+        $election->filiere =$request->filiere;
+        $election->niveau =$request->niveau;
+        $election->datedebut =$request->datedebut;
+        $election->datefin =$request->datefin;
+        $election->statuts =$request->statuts;
+
+        $election->save();
+
+        return redirect()->back()->with('success','Election enregistrée avec succes.');
+
     }
 
     /**
@@ -47,7 +64,8 @@ class ElectionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $election = Election::find($id);
+        return view('election.editer', compact('election'));
     }
 
     /**
@@ -55,15 +73,28 @@ class ElectionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $election = Election::find($id);
+
+        $election->faculte =$request->faculte;
+        $election->filiere =$request->filiere;
+        $election->niveau =$request->niveau;
+        $election->datedebut =$request->datedebut;
+        $election->datefin =$request->datefin;
+        $election->statuts =$request->statuts;
+
+        $election->update();
+        return redirect()->route('index.election')->with('success',"Election modifier avec succès");
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $election = Election::find($id);
+        $election->delete();
+        return back();
     }
 
    /* public function Choice_Elec(){

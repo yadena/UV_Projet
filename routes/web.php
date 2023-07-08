@@ -23,14 +23,21 @@ Route::get('/table', function () {
 
 
 Route::get('/add/candidat',function(){
-    return view('layouts.candidat.add');
+    return view('candidat.add');
 });
 
-Route::get('/liste/candidat',[CandidatController::class,'index'])->name('liste.candidat');
-
+Route::get('/add/candidat',[CandidatController::class,'index']);
+Route::get('/ajouter/election',[ElectionController::class,'index']);
+Route::get('/index/candidat',[CandidatController::class,'liste'])->name('index.candidat');
+Route::get('/liste/election',[ElectionController::class,'liste'])->name('liste.election');
 Route::post('/Enregistrer/candidat',[CandidatController::class,'store'])->name('store.candidat');
+Route::post('/Enregistrer/election',[ElectionController::class,'store'])->name('store.election');
 
-Route::get('/elections',[ElectionController::class,'index']);
-
+Route::get('/Supprimer/candidat/{id}',[CandidatController::class,'destroy'])->name('delete.candidat');
+Route::get('/Editer/candidat/{id}',[CandidatController::class,'edit'])->name('editer.candidat');
+Route::get('/Supprimer/election/{id}',[ElectionController::class,'destroy'])->name('delete.election');
+Route::get('/Editer/election/{id}',[ElectionController::class,'edit'])->name('editer.election');
+Route::post("modifier/candidat/{id}",[CandidatController::class,'update'])->name("update.candidat");
 Route::get('/vote', [ElecteurController::class,'vote'])->name('candidat.vote');
+Route::post("modifier/election/{id}",[ElectionController::class,'update'])->name("update.election");
 

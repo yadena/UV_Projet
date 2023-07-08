@@ -1,35 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Electeur;
+use App\Models\Candidat;
+use App\Models\Election;
 use Illuminate\Http\Request;
 
 class ElecteurController extends Controller
 {
 
 
-  
+
         /**
          * Affiche une liste des électeurs.
          *
-         * 
+         *
          */
         public function index()
         {
             $electeurs = Electeur::all();
-            return view('layouts.electeur.index', compact('electeurs'));
+            return view('electeur.index', compact('electeurs'));
         }
-    
+
         /**
          * Affiche le formulaire de création d'un nouvel électeur.
          *
-         * 
+         *
          */
         public function create()
         {
-            return view('layouts.electeur.create');
+            return view('electeur.create');
         }
-    
+
         /**
          * Enregistre un nouvel électeur dans la base de données.
          *
@@ -42,39 +44,39 @@ class ElecteurController extends Controller
                 'prenom' => 'required',
                 // Ajoutez ici les autres règles de validation des champs
             ]);
-    
+
             Electeur::create($request->all());
-    
-            return redirect()->route('layouts.electeur.index')
+
+            return redirect()->route('electeur.index')
                 ->with('success', 'Électeur créé avec succès.');
         }
-    
+
         /**
          * Affiche les détails d'un électeur spécifique.
          *
-         * 
+         *
          */
         public function show($id)
         {
             $electeur = Electeur::find($id);
-            return view('layouts.electeur.show', compact('electeur'));
+            return view('electeur.show', compact('electeur'));
         }
-    
+
         /**
          * Affiche le formulaire d'édition d'un électeur spécifique.
          *
-         * 
+         *
          */
         public function edit($id)
         {
             $electeur = Electeur::find($id);
-            return view('layouts.electeur.edit', compact('electeur'));
+            return view('electeur.edit', compact('electeur'));
         }
-    
+
         /**
          * Met à jour les informations d'un électeur spécifique dans la base de données.
          *
-         * 
+         *
          */
         public function update(Request $request, $id)
         {
@@ -85,14 +87,14 @@ class ElecteurController extends Controller
                 'niveau'=>'required',
                 // Ajoutez ici les autres règles de validation des champs
             ]);
-    
+
             $electeur = Electeur::find($id);
             $electeur->update($request->all());
-    
-            return redirect()->route('layouts.electeur.index')
+
+            return redirect()->route('electeur.index')
                 ->with('success', 'Électeur mis à jour avec succès.');
         }
-    
+
         /**
          * Supprime un électeur spécifique de la base de données.
          *
@@ -101,13 +103,13 @@ class ElecteurController extends Controller
         public function destroy($id){
             $electeur = Electeur::findOrFail($id);
             $electeur->delete();
-        
-            return redirect()->route('layouts.electeur.index')
+
+            return redirect()->route('electeur.index')
             ->with('success', 'Électeur supprimé avec succès.');
 
         }
 
-        
+
 
 
   public function vote($electeurId, $candidatId,$electionId)
@@ -115,10 +117,10 @@ class ElecteurController extends Controller
         // Vérifier si l'électeur est éligible
         $electeur = Electeur::find($electeurId);
         $election =Election::find($electionId);
-        
+
         if (Str::contains($electeur->matricule, $election->faculté) ){
             if ($electeur) {
-                
+
                 if ($electeur->niveau == $election->niveau){
                     if(!$electeur->voted){
                         // Vérifier si le candidat existe
@@ -132,7 +134,7 @@ class ElecteurController extends Controller
 
                             // Sauvegarder les modifications
                             $candidat->save();
-                              
+
                         }
                     }
                 }
@@ -141,10 +143,10 @@ class ElecteurController extends Controller
         }else{
             return response()->json(['message' => 'Électeur non éligible'], 403);
         }
-        
+
         return response()->json(['message' => 'Vote enregistré avec succès']);
-          
+
     }
 }
-    
+
 

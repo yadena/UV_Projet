@@ -13,11 +13,11 @@ return new class extends Migration
     {
         //
         Schema::create('uds', function (Blueprint $table) {
-            
+
             $table->id();
             $table->foreignId('electeur_id')->id();
         });
-        
+
     }
 
     /**
