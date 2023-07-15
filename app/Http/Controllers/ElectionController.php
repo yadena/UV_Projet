@@ -103,7 +103,7 @@ class ElectionController extends Controller
         }
         $res_c=(($candidat->voix)*100)/$voiceT;
 
-        return [$candidat->nom,$candidat->voix,$res_c];
+        return [$candidat,$res_c];
 
 
     }

@@ -117,8 +117,7 @@ class ElecteurController extends Controller
         "electeur_id"=>"required|exists:electeurs,id",
     ]);
     $electeurId=$request->input('matriculeControle');
-    //$candidatId=$request->('candidat_id');
-    //$electionId=$request->('election_id');
+   
 
         // Vérifier si l'électeur est éligible
         $electeur = Electeur::find($electeurId);
