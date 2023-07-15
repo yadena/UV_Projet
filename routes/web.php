@@ -26,11 +26,20 @@ Route::get('/add/candidat',function(){
     return view('layouts.candidat.add');
 });
 
+Route::get('/resultat',function(){
+    return view('layouts.election.resul');
+});
+
+
 Route::get('/liste/candidat',[CandidatController::class,'index'])->name('liste.candidat');
 
 Route::post('/Enregistrer/candidat',[CandidatController::class,'store'])->name('store.candidat');
 
 Route::get('/elections',[ElectionController::class,'index']);
 
-Route::get('/vote', [ElecteurController::class,'vote'])->name('candidat.vote');
+Route::get('/vote', function () {
+    return view('layouts.electeur.dem');
+});
+
+Route::get('/vote/confirm/{Electeur,Election,Candidat}', [ElecteurController::class,'vote']);
 

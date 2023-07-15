@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('niveau');
             $table->boolean('statuts');
             $table->string('faculté');
+            $table->boolean('time');
             $table->timestamps();
         });
     }

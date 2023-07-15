@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('voix')->default(0);
             $table->string('matricule')->unique()->id();
             $table->integer('niveau');
+           // $table->string('image');
+            $table->foreignId('election_id');
             $table->timestamps();
         });
     }

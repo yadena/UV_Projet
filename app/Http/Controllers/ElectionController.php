@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Election;
+use App\Models\Electeur;
+use App\Models\Candidat;
 
 use Illuminate\Http\Request;
 
@@ -40,6 +42,9 @@ class ElectionController extends Controller
     public function show(string $id)
     {
         //
+
+        $candidat =Candidat::where($id ,$candidat->election_id);
+        return view('layouts.election.index',compact('candidat'));
     }
 
     /**
@@ -66,11 +71,26 @@ class ElectionController extends Controller
         //
     }
 
-   /* public function Choice_Elec(){
-        $elections =Election::all();
-        $el;
-        for( $elections as e ){
-            if($e->niveau)
-        }
-    }*/
+    public function Elec_c(){
+        $elections =Election::where('1',$election->statut);
+        
+       
+        return view('layouts.election.index',compact('elections'));
+        
+    }
+
+    public function Elec_av(){
+        $elections =Election::where('0',$election->statut);
+        
+       
+        return view('layouts.election.index',compact('elections'));
+        
+    }
+    public function Elec_p(){
+        $elections =Election::where('1',$election->time);
+        
+       
+        return view('layouts.election.index',compact('elections'));
+        
+    }
 }

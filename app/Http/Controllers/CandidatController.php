@@ -16,7 +16,7 @@ class CandidatController extends Controller
         
         $candidats = Candidat::all();
 
-        return view('layouts.candidat.index', compact('candidats'));
+        return view('layouts.candidat.index2', compact('candidats'));
     }
 
     /**

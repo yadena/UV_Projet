@@ -1,12 +1,12 @@
-@extends(layouts.app)
+@extends('layouts.app')
 
-@section(body)
+@section('body')
     <div class="container">
         <div class="card">
             <div class="card-header bg-info text-white">Ajouter un candidat</div>
             <div class="card-body">
-                <form action="{{route('store.candidat)}}" method="post">
-                    
+                <form action="/Enregistrer/candidat" method="post">
+                    @csrf
                     <div class="form group">
                         <label-for="">Nom:</label-for>
 
@@ -22,6 +22,16 @@
 
                         <input type="text" name="matricule" id="" class="form-control">
                     </div>
+                    <label-for="">Photo </label-for>
+                    <div class="input-group mb-3">
+                        
+                        <input type="file" class="form-control" id="inputGroupFile02">
+
+                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    </div>
+
+
+
                     <div class="form group">
                         <label-for="">niveau:</label-for>
 
