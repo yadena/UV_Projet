@@ -112,7 +112,6 @@ class ElecteurController extends Controller
 
 
 
-
   public function vote($electeurId, $candidatId,$electionId)
     {
         // Vérifier si l'électeur est éligible
@@ -135,7 +134,6 @@ class ElecteurController extends Controller
 
                             // Sauvegarder les modifications
                             $candidat->save();
-
                         }
                     }
                 }
