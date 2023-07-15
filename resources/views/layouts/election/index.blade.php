@@ -52,7 +52,7 @@
                     <td>{{$election->niveau}}</td>
                     <td>{{$election->faculté}}</td>
                     <td>
-                        <button class="btn btn-secondary " type="button"  aria-expanded="false" action="/liste/candidat">
+                        <button class="btn btn-secondary " type="button"  aria-expanded="false" href="/liste/candidat">
                             Voir
                         </button>
                     </td>

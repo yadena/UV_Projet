@@ -52,6 +52,12 @@ Route::get('/Supprimer/election/{id}',[ElectionController::class,'destroy'])->na
 Route::get('/Editer/election/{id}',[ElectionController::class,'edit'])->name('editer.election');
 Route::post("modifier/election/{id}",[ElectionController::class,'update'])->name("update.election");
 Route::get("resul/election",[ElectionController::class,'index']);
+Route::get('/resultat/{Candidat}',function(){
+    return view('layouts.election.resul');
+});
+
+
+Route::get('/liste/candidat',[CandidatController::class,'index'])->name('liste.candidat');
 
 Route::get('/add/candidat',[CandidatController::class,'index']);
 Route::get('/index/candidat',[CandidatController::class,'liste'])->name('index.candidat');
@@ -64,4 +70,9 @@ Route::get('/vote', [ElecteurController::class,'vote'])->name('candidat.vote');
 //Route::get('/index/electeur',[ElecteurController::class,'index']);
 Route::get('/accueil/electeur',[ElecteurController::class,'index'])->name('electeur');
 
+Route::get('/vote', function () {
+    return view('layouts.electeur.dem');
+});
+
+Route::get('/vote/confirm/{Electeur,Election,Candidat}', [ElecteurController::class,'vote']);
 

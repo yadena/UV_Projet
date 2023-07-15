@@ -112,8 +112,15 @@ class ElecteurController extends Controller
 
 
 
-  public function vote($electeurId, $candidatId,$electionId)
-    {
+  public function vote($candidatId, Request $request,$electionId)
+    {   $request->validate([
+        "election_id"=>"required|exists:elections,id",
+        "candidat_id"=>"required|exists:candidats,id",
+        "electeur_id"=>"required|exists:electeurs,id",
+    ]);
+    $electeurId=$request->input('matriculeControle');
+
+
         // Vérifier si l'électeur est éligible
         $electeur = Electeur::find($electeurId);
         $election =Election::find($electionId);
@@ -128,24 +135,35 @@ class ElecteurController extends Controller
                         if ($candidat) {
 
                             // Incrémenter le nombre de votes du candidat
-                            $candidat->vote++;
+                            $candidat->voix +=1;
                             //modifier l'attribut voted pour dire que l'electeur a dejà voté
                             $electeur->voted = false;
 
                             // Sauvegarder les modifications
                             $candidat->save();
+                            $electeur->save();
+
                         }
                     }
                 }
             }
 
         }else{
-            return response()->json(['message' => 'Électeur non éligible'], 403);
+           // return response()->json(['message' => 'Électeur non éligible'], 403);
+            return redirect('layouts.candidat.index')
+                        ->with('failed', 'Électeur non éligible');
+
         }
 
         return response()->json(['message' => 'Vote enregistré avec succès']);
 
+
+       // return response()->json(['message' => 'Vote enregistré avec succès']);
+       return redirect('layouts.candidat.index')
+        ->with('success', 'vote enregistré avec succès');
+
     }
+
 }
 
 

@@ -17,6 +17,7 @@ class CandidatController extends Controller
     {
        return view('candidat.add',['candidats' => Candidat::get()]);
 
+        //return view('layouts.candidat.index2', compact('candidats'));
     }
 
     /**
