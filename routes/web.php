@@ -26,7 +26,7 @@ Route::get('/add/candidat',function(){
     return view('layouts.candidat.add');
 });
 
-Route::get('/resultat',function(){
+Route::get('/resultat/{Candidat}',function(){
     return view('layouts.election.resul');
 });
 

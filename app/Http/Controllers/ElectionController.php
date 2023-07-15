@@ -93,4 +93,20 @@ class ElectionController extends Controller
         return view('layouts.election.index',compact('elections'));
         
     }
+
+    public function resultat($candidatId){
+        $candidats=Candidat::all();
+        $candidat=Candidat::find($candidatId);
+        $voiceT=0;
+        foreach ($candidats as $cand){
+            $voiceT =$voice + $cand->voix;
+        }
+        $res_c=(($candidat->voix)*100)/$voiceT;
+
+        return [$candidat->nom,$candidat->voix,$res_c];
+
+
+    }
 }
+
+
