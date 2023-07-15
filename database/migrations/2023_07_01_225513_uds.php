@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('uds', function (Blueprint $table) {
 
             $table->id();
+            $table->string('matricule')->unique()->id();
             $table->foreignId('electeur_id')->id();
         });
 

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('electeurs', function (Blueprint $table) {
 
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('faculte');
+            $table->string('filiere');
+            $table->integer('niveau');
             $table->string('matricule')->unique()->id();
             $table->foreignId('candidat_id');
             $table->boolean('voted');
-            $table->integer('niveau');
             $table->timestamps();
         });
     }

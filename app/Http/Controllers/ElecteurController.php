@@ -5,6 +5,7 @@ use App\Models\Electeur;
 use App\Models\Candidat;
 use App\Models\Election;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ElecteurController extends Controller
 {
@@ -18,8 +19,8 @@ class ElecteurController extends Controller
          */
         public function index()
         {
-            $electeurs = Electeur::all();
-            return view('electeur.index', compact('electeurs'));
+            $candidats = Candidat::paginate(10);
+            return view('electeur.accueil', compact('candidats'));
         }
 
         /**

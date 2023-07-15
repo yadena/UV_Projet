@@ -12,11 +12,15 @@ class Election extends Model
    /* public function electeur(){
         return $this->hasMany(Electeur::class);
     }*/
-    public function getIsAnStatutsAttribute():bool{
-/* Creation d'un attribut virtuel
-    }*/
-        return $this->statuts >= 0;
+    public function getIsAnStatutsAttribute(){
+        /* Creation d'un attribut virtuel
+          }*/
+        $date_actuelle = date('Y-m-d');
+
+        return $this->statuts >=0;
+
     }
+
     public function candidat(){
         return $this->hasMany(Candidat::class);
     }

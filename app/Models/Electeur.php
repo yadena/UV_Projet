@@ -9,11 +9,12 @@ class Electeur extends Model
 {
     use HasFactory;
     protected $filliable=[
-        'nom',
-        'prenom',
-        'candidat_id',
+        'faculte',
         'filiere',
-        'niveau'
+        'niveau',
+        'matricule',
+        'candidat_id'
+
     ];
 
     public function candidat(){

@@ -5,6 +5,7 @@ use App\Models\Candidat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
+
 class CandidatController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class CandidatController extends Controller
      */
     public function index()
     {
-       return view('candidat.add');
+       return view('candidat.add',['candidats' => Candidat::get()]);
 
     }
 
@@ -26,7 +27,7 @@ class CandidatController extends Controller
     public function liste()
 
     {
-        $candidat = Candidat::all();
+        $candidat = Candidat::paginate(10);
 
         return view('candidat.index', compact("candidat"));
 
@@ -40,11 +41,37 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nom'=> 'required',
+            'prenom'=> 'required',
+            'DateNaissance'=> 'required',
+            'photo'=> 'required|mimes:jpeg,png,gif,bmp,tiff,raw,svg|max:2000 ',
+            'matricule'=> 'required',
+            'faculte'=> 'required',
+            'filiere'=> 'required',
+            'niveau'=> 'required',
+            'motivation'=> 'required',
+        ]);
+
+        //upload image
+        if ($request->hasFile('photo')) {
+            $imageName = time(). '.' .$request->photo->getClientOriginalExtension();
+        } else {
+            // handle the error here
+        }
+
+        if ($request->hasFile('photo')) {
+            $request->photo->move(public_path('candidats'), $imageName);
+        } else {
+            // handle the error here
+        }
+
+
         $candidat = new Candidat();
         $candidat->nom =$request->nom;
         $candidat->prenom =$request->prenom;
         $candidat->DateNaissance =$request->DateNaissance;
-        $candidat->voie=$request->voie;
+        $candidat->photo=$request->photo;
         $candidat->matricule =$request->matricule;
         $candidat->faculte =$request->faculte;
         $candidat->filiere =$request->filiere;
@@ -98,6 +125,7 @@ class CandidatController extends Controller
         $candidat->faculte =$request->faculte;
         $candidat->filiere =$request->filiere;
         $candidat->niveau =$request->niveau;
+        $candidat->photo=$request->photo;
         $candidat->motivation =$request->motivation;
 
         $candidat->update();

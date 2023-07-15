@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->date('DateNaissance');
-            $table->integer('voie')->default(0);
+            $table->string('photo');
             $table->string('matricule')->unique()->id();
             $table->string('faculte');
             $table->string('filiere');
