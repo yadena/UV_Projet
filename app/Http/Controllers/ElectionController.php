@@ -132,11 +132,5 @@ class ElectionController extends Controller
     }
 
 
-   /* public function Choice_Elec(){
-        $elections =Election::all();
-        $el;
-        for( $elections as e ){
-            if($e->niveau)
-        }
-    }*/
+   
 }

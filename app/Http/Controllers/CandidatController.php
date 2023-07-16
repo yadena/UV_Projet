@@ -145,4 +145,16 @@ class CandidatController extends Controller
         $candidat->delete();
         return back();
     }
+
+    public function resultat($id){
+        $candidats=Candidat::all();
+        $candidat=Candidat::find($id);
+        $voice_T=0;
+        foreach($candidats as $cand){
+            $voice_T=$voice_T+$cand->voix;
+
+        }
+        return (($candidat->voix)/$voice_T)*100 ;
+
+    }
 }

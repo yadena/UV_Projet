@@ -27,7 +27,13 @@ Route::prefix('/login')->middleware('auth')->group(function(){
         return view('pages.user.index');
     });
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+   
+
+});
+
+Route::get('/', function(){
+
+    return view('home');
 
 });
 
@@ -65,14 +71,14 @@ Route::post('/Enregistrer/candidat',[CandidatController::class,'store'])->name('
 Route::get('/Supprimer/candidat/{id}',[CandidatController::class,'destroy'])->name('delete.candidat');
 Route::get('/Editer/candidat/{id}',[CandidatController::class,'edit'])->name('editer.candidat');
 Route::post("modifier/candidat/{id}",[CandidatController::class,'update'])->name("update.candidat");
-
-Route::get('/vote', [ElecteurController::class,'vote'])->name('candidat.vote');
+//Route::post('/vote/{Candidat}/{Election}/{Electeur}',ElecteurController::class);
+Route::get('/index/vote/{Candidat}/{Electeur?}', [ElecteurController::class,'vote'])->name('candidat.vote');
 //Route::get('/index/electeur',[ElecteurController::class,'index']);
 Route::get('/accueil/electeur',[ElecteurController::class,'index'])->name('electeur');
 
-Route::get('/vote', function () {
+//Route::get('/vote', function () {
     return view('layouts.electeur.dem');
-});
+//});
 
-Route::get('/vote/confirm/{Electeur,Election,Candidat}', [ElecteurController::class,'vote']);
+Route::post('/vote/confirm/{Electeur,Election,Candidat}', [ElecteurController::class,'vote']);
 

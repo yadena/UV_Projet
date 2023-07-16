@@ -67,8 +67,15 @@
                                     <td>
                                         <a href="{{route('editer.candidat',$candidat->id)}}" class="btn btn-warning">Editer</a>
                                         <a onclick="return confirm ('Voulez-vous supprimer cette candidature?');" href="{{Route('delete.candidat',$candidat->id)}}" class="btn btn-danger">Supprimer</a>
+                                        <a class="btn btn-success"  href='/index/vote/{$candidat->matricule}/{$candidat->election_id}/{$electeur->matricule}'>voter</button>
+                                       
+
                                     </td>
                                  </tr>
+                                 
+
+
+                                 </div>
 
                             @endforeach
                           </table>
