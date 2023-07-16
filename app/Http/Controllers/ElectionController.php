@@ -141,12 +141,9 @@ class ElectionController extends Controller
         return back();
     }
 
+    public function home() {
+        $elections = Election::where('datedebut', '<=', today())->where('datefin', '>=', today())->get();
+        return view('home', compact('elections'));
+    }
 
-   /* public function Choice_Elec(){
-        $elections =Election::all();
-        $el;
-        for( $elections as e ){
-            if($e->niveau)
-        }
-    }*/
 }

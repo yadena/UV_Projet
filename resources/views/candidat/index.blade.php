@@ -61,6 +61,10 @@
                                     </td>
                                  </tr>
 
+
+
+                                 </div>
+
                             @endforeach
                           </table>
 

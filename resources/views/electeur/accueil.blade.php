@@ -33,6 +33,11 @@
                                                 <th class="text-secondary opacity-7"></th>
                                             </tr>
                                         </thead>
+
+
+
+
+
                                         @foreach ($candidats as $candidat)
                                             <tr>
 
@@ -48,12 +53,39 @@
                                                 <td>{{ $candidat->filiere }}</td>
 
                                                 <td>
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#voteModal">
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#voteModal{{ $candidat->matricule }}">
                                                         {{_("Voter")}}
                                                     </button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="voteModal{{ $candidat->matricule }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Entrer votre matricule</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div>
+                                                                    <form method="POST" action="{{
+                                                                        route('vote',$candidat->election_id)
+                                                                    }}">
+                                                                    @csrf
+                                                                          <input type="text" class="form-control" id="matriculeVote" name="matriculeVote" placeholder="CM-UDS-16SCI0708">
+                                                                          <input type="hidden" class="form-control" id="candidat_id" name="candidat_id" value="{{$candidat->id}}">
+                                                                          <button type="submit" class="btn btn-success">voter</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
+
                                     </table>
 
                                 </div>
@@ -65,24 +97,5 @@
 
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="voteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Entrer votre matricule</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <input type="text" class="form-control" id="matriculeVote" placeholder="CM-UDS-16SCI0708">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Voter</button>
-                    </div>
-                </div>
-                </div>
-            </div>
+
 @endsection

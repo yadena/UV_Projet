@@ -112,56 +112,26 @@ class ElecteurController extends Controller
 
 
 
-  public function vote($candidatId, Request $request,$electionId)
-    {   $request->validate([
-        "election_id"=>"required|exists:elections,id",
-        "candidat_id"=>"required|exists:candidats,id",
-        "electeur_id"=>"required|exists:electeurs,id",
-    ]);
-    $electeurId=$request->input('matriculeControle');
+  public function vote(Request $request, Election $election)
+    {
+        $request->validate([
+            "matriculeVote"=>"required|exists:electeurs,matricule",
+            "candidat_id"=>"required|exists:candidats,id"
+        ]);
+
+        $candidat = Candidat::find($request->candidat_id);
+        $electeur = Electeur::where('matricule', $request->matriculeVote)->first();
 
 
-        // Vérifier si l'électeur est éligible
-        $electeur = Electeur::find($electeurId);
-        $election =Election::find($electionId);
-
-        if (Str::contains($electeur->matricule, $election->faculté) ){
-            if ($electeur) {
-
-                if ($electeur->niveau == $election->niveau){
-                    if(!$electeur->voted){
-                        // Vérifier si le candidat existe
-                        $candidat = Candidat::find($candidatId);
-                        if ($candidat) {
-
-                            // Incrémenter le nombre de votes du candidat
-                            $candidat->voix +=1;
-                            //modifier l'attribut voted pour dire que l'electeur a dejà voté
-                            $electeur->voted = false;
-
-                            // Sauvegarder les modifications
-                            $candidat->save();
-                            $electeur->save();
-
-                        }
-                    }
-                }
-            }
-
-        }else{
-           // return response()->json(['message' => 'Électeur non éligible'], 403);
-            return redirect('layouts.candidat.index')
-                        ->with('failed', 'Électeur non éligible');
-
+        if($candidat->election_id != $election->id){
+            return back();
         }
+        $electeur->voted = true;
+        $electeur->save();
 
-        return response()->json(['message' => 'Vote enregistré avec succès']);
-
-
-       // return response()->json(['message' => 'Vote enregistré avec succès']);
-       return redirect('layouts.candidat.index')
-        ->with('success', 'vote enregistré avec succès');
-
+        $candidat->voix++;
+        $candidat->save();
+        return to_route('index.candidat');
     }
 
 }

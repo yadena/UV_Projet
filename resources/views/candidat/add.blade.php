@@ -26,7 +26,19 @@
                                 <p class="text-uppercase text-sm">Information personnelle</p>
                                 <div class="row">
 
-                                    <div class="col-md-5">
+                                    <div class="col-md-12">
+
+                                        <div class="form-group">
+                                            <label for="">Election:</label>
+                                            <select name="election_id" id="election_id" class="form-control">
+                                                @foreach ($elections as $item)
+                                                    <option value="{{$item->id}}">{{ $item->filiere }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
 
                                         <div class="form-group">
                                             <label for="">Nom:</label>

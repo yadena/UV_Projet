@@ -8,14 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Electeur extends Model
 {
     use HasFactory;
-    protected $filliable=[
-        'faculte',
-        'filiere',
-        'niveau',
-        'matricule',
-        'candidat_id'
-
-    ];
+    protected $guarded = [];
 
     public function candidat(){
         return $this->belongsTo(Candidat::class);

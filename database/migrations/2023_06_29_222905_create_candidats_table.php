@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('prenom');
             $table->date('DateNaissance');
             $table->string('photo');
+            $table->integer('voix')->default(0);
             $table->string('matricule')->unique()->id();
             $table->string('faculte');
             $table->string('filiere');
+            $table->foreignId('election_id');
             $table->integer('niveau');
             $table->string('motivation');
             $table->timestamps();

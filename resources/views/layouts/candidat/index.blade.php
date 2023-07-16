@@ -20,7 +20,7 @@
                     <td>{{$candidat->matricule}}</td>
                     <td>{{$candidat->niveau}}</td>
                     <td>
-                        <button class="btn btn-secondary " type="button"  aria-expanded="false" action="/vote">
+                        <button class="btn btn-success " type="button"  aria-expanded="false" wire:click='vote({{$candidat->id}})' action="/vote">
                             Voter
                         </button>
                     </td>

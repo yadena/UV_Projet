@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Candidat;
+use App\Models\Election;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -15,9 +16,8 @@ class CandidatController extends Controller
      */
     public function index()
     {
-       return view('candidat.add',['candidats' => Candidat::get()]);
-
-        //return view('layouts.candidat.index2', compact('candidats'));
+        $elections = Election::where('datefin', '>=', now())->get();
+       return view('candidat.add', compact('elections'));
     }
 
     /*public function search(){
@@ -75,7 +75,7 @@ class CandidatController extends Controller
             'nom'=> 'required',
             'prenom'=> 'required',
             'DateNaissance'=> 'required',
-            'photo'=> 'required|mimes:jpeg,png,gif,bmp,tiff,raw,svg|max:2000 ',
+            'election_id' => 'required',
             'matricule'=> 'required',
             'faculte'=> 'required',
             'filiere'=> 'required',
@@ -105,6 +105,7 @@ class CandidatController extends Controller
         $candidat->matricule =$request->matricule;
         $candidat->faculte =$request->faculte;
         $candidat->filiere =$request->filiere;
+        $candidat->election_id =$request->election_id;
         $candidat->niveau =$request->niveau;
         $candidat->motivation =$request->motivation;
 
@@ -173,5 +174,17 @@ class CandidatController extends Controller
         $candidat = Candidat::find($id);
         $candidat->delete();
         return back();
+    }
+
+    public function resultat($id){
+        $candidats=Candidat::all();
+        $candidat=Candidat::find($id);
+        $voice_T=0;
+        foreach($candidats as $cand){
+            $voice_T=$voice_T+$cand->voix;
+
+        }
+        return (($candidat->voix)/$voice_T)*100 ;
+
     }
 }
