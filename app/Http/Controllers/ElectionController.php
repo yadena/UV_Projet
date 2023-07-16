@@ -46,6 +46,16 @@ class ElectionController extends Controller
         return view('election.index', compact('elections', 'type'));
     }
 
+    public function view(Request $request){
+        $search = $request['search']??"";
+        if ($search != " "){
+            $elections = election::where("faculte", "=", $search )->get();
+        }else{
+            $elections = election::all();
+        }
+        $data = compact("elections","data");
+        return view("election-view")->with($data);
+    }
 
 
     /**
@@ -117,7 +127,7 @@ class ElectionController extends Controller
         $election->statuts = $request->statuts;
 
         $election->update();
-        return to_route('index.election')->with('success', "Election modifier avec succès");
+        return to_route('index.election')->with('success', "Election modifiée avec succès");
     }
 
 

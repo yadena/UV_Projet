@@ -19,17 +19,19 @@ Auth::routes();
 
 Route::prefix('/login')->middleware('auth')->group(function(){
 
-    Route::get('/home', function () {
-        return view('home')->name('home');
-    });
+
 
     Route::get('/table', function () {
         return view('pages.user.index');
     });
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 });
+    Route::get('/home', function(){
+        return view('home');
+    });
+
+
+
+
 
 Route::get('/login', function(){
     return view('auth.login');
@@ -45,6 +47,7 @@ Route::get('/add/candidat',function(){
 });
 
 Route::get('/ajouter/election',[ElectionController::class,'index']);
+Route::get('/election',[ElectionController::class,'view']);
 Route::get('/liste/election',[ElectionController::class,'liste'])->name('liste.election');
 //Route::get('/liste/election',[ElectionController::class,'liste'])->name('liste.election');
 Route::post('/Enregistrer/election',[ElectionController::class,'store'])->name('store.election');
@@ -55,10 +58,14 @@ Route::get("resul/election",[ElectionController::class,'index']);
 Route::get('/resultat/{Candidat}',function(){
     return view('layouts.election.resul');
 });
+Route::get('/',function(){
+    return view('home');
+});
+
 
 
 Route::get('/liste/candidat',[CandidatController::class,'index'])->name('liste.candidat');
-
+Route::get('/search/candidat',[CandidatController::class,'search']);
 Route::get('/add/candidat',[CandidatController::class,'index']);
 Route::get('/index/candidat',[CandidatController::class,'liste'])->name('index.candidat');
 Route::post('/Enregistrer/candidat',[CandidatController::class,'store'])->name('store.candidat');
@@ -75,4 +82,3 @@ Route::get('/vote', function () {
 });
 
 Route::get('/vote/confirm/{Electeur,Election,Candidat}', [ElecteurController::class,'vote']);
-

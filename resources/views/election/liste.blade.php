@@ -61,13 +61,19 @@
         <body>
             <div class="container-fluid py-7">
                 <div class="row">
+                    <form action "" class = col-9>
+                        <div class= 'form-group'>
+
+                        </div>
+
+                    </form>
                   <div class="col-12">
                     <div class="card mb-4">
                       <div class="card-header pb-1">
                         <h6>Liste des elections</h6>
 
                             <a class="nav-link " href="/ajouter/election">
-                                <button class="btn btn-primary btn-sm ms-10">Nouvelle élection</button>
+                                <button class="btn btn-primary btn-sm ms-9">Nouvelle élection</button>
                             </a>
 
                       </div>

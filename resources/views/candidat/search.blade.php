@@ -1,5 +1,3 @@
-<?php $search = $search ?? null; ?>
-
 @extends('layouts.app')
 
 @section('body')
@@ -7,14 +5,7 @@
         <body>
             <div class="container-fluid py-5">
                 <div class="row">
-                    <form action="" class="col-5" >
-                        <div class='form-group'>
-                            <input type="search" name="search" id="" class="form-control" placeholder="Recherche nom ou matricule" value="{{ $search }}"/>
 
-
-                        </div>
-                        <button class="btn btm btp-primary" >Recherche</button>
-                    </form>
                   <div class="col-12">
                     <div class="card mb-4">
                       <div class="card-header pb-1">
@@ -42,7 +33,7 @@
                                 <th class="text-secondary opacity-7"></th>
                               </tr>
                             </thead>
-                            @foreach ($candidat as $candidat)
+                            @foreach ($candidats as $candidat)
                                  <tr>
 
                                     <td>{{ $candidat->id }}</td>

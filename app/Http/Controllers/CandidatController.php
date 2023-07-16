@@ -20,6 +20,35 @@ class CandidatController extends Controller
         //return view('layouts.candidat.index2', compact('candidats'));
     }
 
+    /*public function search(){
+
+        if (isset($_GET['query'])) {
+            $search_text = $_GET['query'];
+            $candidats = candidat::where("nom", "LIKE", "%" .$search_text. "%" )->with('matricule')->get();
+            return view ("candidat.search",compact("candidats"));
+        } else {
+            // Handle the case where $_GET['query'] is not set
+        }
+
+        $candidats = candidat::where("nom", "LIKE", "%" .$search_text. "%" )->with('matricule')->get();
+
+        return view ("candidat.search",compact("candidats"));
+
+    }
+    */
+    public function search() {
+        $search_text = $_GET['query'] ?? null;
+        if ($search_text) {
+            $candidats = candidat::where("nom", "LIKE", "%" .$search_text. "%" )->get();
+            return view ("candidat.search",compact("candidats"));
+        } else {
+            $candidats = candidat::all();
+            return view ("candidat.search",compact("candidats"));
+        }
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *
